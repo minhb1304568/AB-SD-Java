@@ -7,8 +7,6 @@ import hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-// Implements và định nghĩa lại các phương thức của ExampleInterface
-
 public class ExampleDAO implements ExampleInterface{
 
 	private Session session;
@@ -35,31 +33,34 @@ public class ExampleDAO implements ExampleInterface{
 		session.close();
 	}
 
-	// Khu vực Overwrite 
-	
 	@Override
 	public void insertEntity(Object Entity) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void deleteEntity(Object Entity) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void updateEntity(Object Entity) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public Object getEntityByName(String name) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<Object> getAllEntity() {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

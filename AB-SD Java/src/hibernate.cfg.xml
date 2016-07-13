@@ -9,9 +9,9 @@
 	
 		<!-- Related to the connection START -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/javadb</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bap</property>
+		<property name="hibernate.connection.username">bap</property>
+		<property name="hibernate.connection.password">bap</property>
 		<!-- Related to the connection END -->
 		
 		<!-- Related to Hibernate properties END -->
@@ -28,7 +28,7 @@
 
 		<!-- Mapping to Resource -->
 		<!-- <mapping resource="trainee.hbm.xml" /> -->
-		<mapping class="model.FootballClub"/>
+		<mapping class="model.User"/>
 
 	</session-factory>
 </hibernate-configuration>
