@@ -1,0 +1,9 @@
+package dao;
+
+public class TuanDAO {
+
+	public TuanDAO() {
+		// Tuan bi DAO
+	}
+
+}
