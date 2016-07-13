@@ -4,7 +4,7 @@ public class TuanDAO {
 
 	public TuanDAO() {
 
-	// la la la Tuan la hoa 
+	// minh khin khin khin khin
 
 }
 }
