@@ -5,6 +5,7 @@ import java.util.List;
 
 // tuan khung
 // tuan dien
+// TuN TUNG
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
