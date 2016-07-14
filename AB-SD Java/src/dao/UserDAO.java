@@ -52,21 +52,6 @@ public class UserDAO implements UserInterface{
 		
 		return null;
 	}
-	
-	public static void main(String[] args) {
-		UserDAO dao = new UserDAO();
-		
-//		dao.insertUser(new User("hoikhin@gmail.com", "tuancamcam"));
-//		dao.insertUser(new User("khin@gmail.com", "tuancamcam"));
-//		dao.insertUser(new User("khinkhin@gmail.com", "tuancamcam"));
-//		dao.insertUser(new User("khinkhinkhin@gmail.com", "tuancamcam"));
-		dao.getAllUser2();
-//		User user = dao.getUserByEmail("tuankhung@gmail.com");
-//		System.out.println(user.getEmail() + " " + user.getPassword());
-//		user.setPassword("joiuoiiouoi");
-//		//dao.updatePassword(user);
-//		System.out.println(user.getEmail() + " " + user.getPassword());
-	}
 
 	//Delete user
 	@Override
@@ -106,12 +91,11 @@ public class UserDAO implements UserInterface{
 		try {
 			openSessionWithBeginTransaction();
 			
-			//Find and Delete old email
+			//Find user
 			User oldUser = (User) session.get(User.class, user.getEmail());
-			session.delete(oldUser);
 			
-			//Create a new email
-			session.saveOrUpdate(user);
+			//set pass
+			oldUser.setPassword(user.getPassword());
 			
 			commit(); 
 		} catch (HibernateException e) {
