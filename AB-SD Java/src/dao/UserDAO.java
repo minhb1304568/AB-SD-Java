@@ -3,9 +3,11 @@ package dao;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.jdt.internal.compiler.batch.Main;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import hibernate.HibernateUtil;
 import model.User;
@@ -152,5 +154,29 @@ public class UserDAO implements UserInterface{
 		}
 		return null;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isExist(User user) {
+		List<User> list = null;
+		try {
+			openSession();
+			
+			list = session.createCriteria(User.class)
+					.add(Restrictions.like("email", user.getEmail()))
+					.list();
+			
+			if(list.isEmpty()) return false;
+			
+			
+		} catch (HibernateException e) {
+			System.out.println("Failed when to update User!");
+			e.printStackTrace();
+		} finally {
+			closeSession();
+		}
+		return true;
+	}
+	
 
 }

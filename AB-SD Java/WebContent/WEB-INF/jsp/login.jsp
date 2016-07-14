@@ -33,6 +33,11 @@
 							<td></td>
 							<td><input type="submit" value="Login"></td>
 						</tr>
+						<tr>
+							<td>
+								${message }
+							</td>
+						</tr>
 					</table>
 				</form:form>
 			</div>
