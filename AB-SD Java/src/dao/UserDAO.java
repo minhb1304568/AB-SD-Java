@@ -3,7 +3,6 @@ package dao;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.jdt.internal.compiler.batch.Main;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
