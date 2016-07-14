@@ -20,4 +20,7 @@ public interface UserInterface {
 	
 	//return list of user
 	public List<User> getAllUser();
+	
+	//
+	public boolean isExist(User user);
 }
