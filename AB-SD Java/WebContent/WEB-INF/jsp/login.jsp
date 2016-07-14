@@ -35,7 +35,7 @@
 						</tr>
 						<tr>
 							<td>
-							${message }
+								${message }
 							</td>
 						</tr>
 					</table>
