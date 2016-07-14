@@ -23,11 +23,16 @@ public class LoginController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.POST)
 	public ModelAndView handleLoginForm(@ModelAttribute("User") User user) {
-		ModelAndView model = new ModelAndView("login");
-		model.addObject("User", new User());
+		ModelAndView model1 = new ModelAndView("login");
+		ModelAndView model2 = new ModelAndView("menu");
 		
+		UserDAO userDAO= new UserDAO();
 		
-		return model;
+		if(userDAO.isExist(user)) return model2;
+		else{
+			model1.addObject("message", "The email and password you entered don't match");
+			return model1;
+		}
 	}
 	
 }
