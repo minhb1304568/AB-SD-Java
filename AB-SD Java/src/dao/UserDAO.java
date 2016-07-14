@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 // tuan khung
+// tuan dien
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
