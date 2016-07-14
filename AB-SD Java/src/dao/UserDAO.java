@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -33,6 +36,7 @@ public class UserDAO implements UserInterface{
 		session.close();
 	}
 
+	//get user by email
 	@Override
 	public User getUserByEmail(String mail) {
 		try {
@@ -52,13 +56,19 @@ public class UserDAO implements UserInterface{
 	public static void main(String[] args) {
 		UserDAO dao = new UserDAO();
 		
-		dao.insertUser(new User("tuankhung@gmail.com", "tuancamcam"));
-		
-		User user = dao.getUserByEmail("tuankhung@gmail.com");
-		
-		System.out.println(user.getEmail() + " " + user.getPassword());
+//		dao.insertUser(new User("hoikhin@gmail.com", "tuancamcam"));
+//		dao.insertUser(new User("khin@gmail.com", "tuancamcam"));
+//		dao.insertUser(new User("khinkhin@gmail.com", "tuancamcam"));
+//		dao.insertUser(new User("khinkhinkhin@gmail.com", "tuancamcam"));
+		dao.getAllUser2();
+//		User user = dao.getUserByEmail("tuankhung@gmail.com");
+//		System.out.println(user.getEmail() + " " + user.getPassword());
+//		user.setPassword("joiuoiiouoi");
+//		//dao.updatePassword(user);
+//		System.out.println(user.getEmail() + " " + user.getPassword());
 	}
 
+	//Delete user
 	@Override
 	public void deleteUser(User user) {
 		try {
@@ -74,6 +84,7 @@ public class UserDAO implements UserInterface{
 		}
 	}
 
+	//insert user
 	@Override
 	public void insertUser(User user) {
 		try {
@@ -87,6 +98,75 @@ public class UserDAO implements UserInterface{
 		} finally {
 			closeSession();
 		}
+	}
+	
+	//Change user's password
+	@Override
+	public void updatePassword(User user) {
+		try {
+			openSessionWithBeginTransaction();
+			
+			//Find and Delete old email
+			User oldUser = (User) session.get(User.class, user.getEmail());
+			session.delete(oldUser);
+			
+			//Create a new email
+			session.saveOrUpdate(user);
+			
+			commit(); 
+		} catch (HibernateException e) {
+			System.out.println("Failed when to update User!");
+			e.printStackTrace();
+			rollback();
+		} finally {
+			closeSession();
+		}
+		
+	}
+
+	//return list user
+	@Override
+	public List<User> getAllUser() {
+		try {
+			openSessionWithBeginTransaction();
+			List<User> user = session.createQuery("from User").list();//chua hieu
+			for(Iterator<User> iterator=user.iterator();iterator.hasNext();){ //chua hieu tooo
+				User em = (User)iterator.next();
+				System.out.println(em.getEmail());
+			}
+			commit();
+			return user;
+		} catch (HibernateException e) {
+			System.out.println("Failed when to get list User!");
+			e.printStackTrace();
+			rollback();
+		} finally {
+			closeSession();
+		}
+		return null;
+	}
+	
+	public List<User> getAllUser2() {
+		try {
+			openSessionWithBeginTransaction();
+			
+			@SuppressWarnings("unchecked")
+			List<User> user = session.createCriteria(User.class).list();
+			
+			for (User user2 : user) {
+				System.out.println(user2.getEmail());
+			}
+			
+			commit();
+			return user;
+		} catch (HibernateException e) {
+			System.out.println("Failed when to get list User!");
+			e.printStackTrace();
+			rollback();
+		} finally {
+			closeSession();
+		}
+		return null;
 	}
 
 }
