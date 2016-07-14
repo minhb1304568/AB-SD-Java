@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+body {
+	font: 16px Arial, sans-serif;
+	margin: 0 auto;
+}
+
+.container {
+	display: table;
+}
+
+.vertical-middle {
+	display: table-cell;
+	vertical-align: middle;
+	height: 80vh;
+}
+
+.main {
+	border: 2px solid #FF4700;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+.header {
+	
+}
