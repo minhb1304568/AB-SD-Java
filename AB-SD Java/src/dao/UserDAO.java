@@ -3,7 +3,7 @@ package dao;
 import java.util.Iterator;
 import java.util.List;
 
-//
+// Tuan khung dien
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
